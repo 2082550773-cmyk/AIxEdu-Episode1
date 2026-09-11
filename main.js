@@ -33,34 +33,34 @@ function render(time) {
   const gap = progressBetween(time, s5.gapLabelStart, s5.gapLabelEnd);
   visible(el["gap-label"], gap * (1 - .55 * progressBetween(time, s5.liquidEmphasisStart, s5.liquidBridgeStart)) * (1 - progressBetween(time, 15.4, 16)));
   draw(el["gap-label"].querySelector("path"), gap);
-  const bridge = progressBetween(time, s5.liquidBridgeStart, 13.35);
+  const bridge = progressBetween(time, s5.liquidBridgeStart, s5.liquidBridgeEnd);
   visible(el["liquid-bridge-label"], bridge * (1 - progressBetween(time, 15.4, 16)));
   draw($("liquid-pointer"), bridge);
 
-  const substrate = progressBetween(time, s5.substrateStart, 14.25);
-  draw(el.substrate, substrate); draw(el["written-line"], progressBetween(time, 14.15, 15));
-  visible(el["liquid-transfer-label"], progressBetween(time, 14.55, 15) * (1 - progressBetween(time, 15.15, 15.4)));
+  const substrate = progressBetween(time, s5.substrateStart, s5.substrateDrawEnd);
+  draw(el.substrate, substrate); draw(el["written-line"], progressBetween(time, s5.writtenLineStart, s5.end));
+  visible(el["liquid-transfer-label"], progressBetween(time, s5.transferLabelStart, s5.end) * (1 - progressBetween(time, s6.start + .15, s6.moveStructureStart)));
 
   const move = ease(progressBetween(time, s6.moveStructureStart, s6.moveStructureEnd));
-  $("hair-structure").setAttribute("transform", `translate(${510 * move} ${65 * move}) scale(${1 - .28 * move})`);
+  $("hair-structure").setAttribute("transform", `translate(${350 * move} ${22 * move}) scale(${1 - .16 * move})`);
   const replay = time >= s6.transferReplayStart && time < s6.settleStart ? Math.sin(progressBetween(time, s6.transferReplayStart, s6.settleStart) * Math.PI) : 0;
   el["confined-liquid"].style.fill = replay ? `rgb(${169 - 16 * replay},${220 - 8 * replay},${232})` : "";
   if (time >= 15) draw(el["written-line"], .78 + .22 * progressBetween(time, s6.transferReplayStart + .2, s6.settleStart));
 
   visible(el["old-representation-group"], progressBetween(time, s6.oldTipStart, s6.oldTipStart + .3));
   visible(el["old-kicker"], progressBetween(time, s6.oldTipStart, s6.oldTipStart + .45));
-  draw(el["old-single-tip"], progressBetween(time, s6.oldTipStart, 17));
-  draw(el["old-thinner-tip"], progressBetween(time, s6.oldThinnerTipStart, 17.55));
-  draw(el["old-arrow"], progressBetween(time, s6.oldThinnerTipStart + .15, 17.7));
-  draw(el["old-frame"], progressBetween(time, s6.oldFrameStart, 18.3));
-  visible(el["old-heading"], progressBetween(time, s6.oldTitleStart, 18.8));
-  el["old-group-cross"].querySelectorAll(".draw").forEach((p, i) => draw(p, progressBetween(time, s6.oldCrossStart + i * .12, 19.35 + i * .12)));
+  draw(el["old-single-tip"], progressBetween(time, s6.oldTipStart, s6.oldTipEnd));
+  draw(el["old-thinner-tip"], progressBetween(time, s6.oldThinnerTipStart, s6.oldThinnerTipEnd));
+  draw(el["old-arrow"], progressBetween(time, s6.oldArrowStart, s6.oldArrowEnd));
+  draw(el["old-frame"], progressBetween(time, s6.oldFrameStart, s6.oldFrameEnd));
+  visible(el["old-heading"], progressBetween(time, s6.oldTitleStart, s6.oldTitleEnd));
+  el["old-group-cross"].querySelectorAll(".draw").forEach((p, i) => draw(p, progressBetween(time, s6.oldCrossStart + i * .12, s6.oldCrossEnd - .15 + i * .12)));
   el["old-representation-group"].style.opacity = `${progressBetween(time, s6.oldTipStart, s6.oldTipStart + .3) * (1 - .65 * progressBetween(time, s6.oldCrossStart, s6.comparisonPauseStart))}`;
 
   visible(el["new-representation-group"], progressBetween(time, s6.newFrameStart, s6.newFrameStart + .1));
   draw(el["new-frame"], progressBetween(time, s6.newFrameStart, s6.newTitleStart));
-  visible(el["new-heading"], progressBetween(time, s6.newTitleStart, s6.newTitleStart + .8));
-  visible(el["new-question"], progressBetween(time, s6.newQuestionStart, s6.newQuestionStart + .8));
+  visible(el["new-heading"], progressBetween(time, s6.newTitleStart, s6.newTitleEnd));
+  visible(el["new-question"], progressBetween(time, s6.newQuestionStart, s6.newQuestionEnd));
   visible(el["final-statement"], time >= s6.finalHoldStart ? 1 : 0);
 
   const subtitle = timeline.subtitles.find(([start, end]) => time >= start && time < end)?.[2] || timeline.subtitles.at(-1)[2];

@@ -12,7 +12,8 @@ text { fill:var(--ink); font-family:"Comic Sans MS","Bradley Hand","Noto Sans SC
 .accent-stroke, .accent-stroke .draw { stroke:var(--accent); }.accent-text text, #final-statement { fill:var(--accent); }.accent-blue { stroke:#78bfd1; }.strong { stroke-width:7; }
 .old-mark { stroke:var(--accent); stroke-dasharray:12 12; }.frame { stroke-width:3; }.small-label { font-size:20px; fill:#498a99; letter-spacing:2px; }
 .kicker { font-size:30px; fill:var(--muted); }.question { font-size:26px; letter-spacing:0; }
-#old-title,#new-title { font-size:27px; letter-spacing:1px; }.accent-text { color:var(--accent); }
+#old-title,#new-title { font-size:27px; letter-spacing:1px; }#new-title,#new-title-cn { text-anchor:middle; }.accent-text { color:var(--accent); }
+#new-question { text-anchor:middle; font-size:24px; }
 #final-statement { font-size:30px; font-weight:700; opacity:0; }
 #subtitle-layer rect { fill:#24231f; opacity:.94; }#subtitle-layer text { fill:#fffdf7; font-family:"Noto Sans SC","Microsoft YaHei",sans-serif; font-size:28px; text-anchor:middle; letter-spacing:0; }
 .controls { display:flex; align-items:center; gap:10px; padding:10px 2px 0; }
