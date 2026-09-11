@@ -39,3 +39,39 @@ window.SHOT_TIMELINE = Object.freeze({
     [24, 25.01, "这不是同一道题的更好答案。"]
   ])
 });
+
+// Visual tuning controls. Values match the approved base; adjust here rather
+// than editing SVG paths, CSS rules, or render math in other files.
+window.SHOT_TUNING = Object.freeze({
+  layout: Object.freeze({
+    shot05: Object.freeze({
+      scene: Object.freeze({ x: 0, y: 0, scale: 1 }),
+      tipLabel: Object.freeze({ x: 1010, y: 525, lineGap: 34 }),
+      gapLabel: Object.freeze({ x: 1040, y: 323, lineGap: 37 }),
+      liquidBridgeLabel: Object.freeze({ x: 1015, y: 405, lineGap: 37 })
+    }),
+    shot06: Object.freeze({
+      oldGroup: Object.freeze({ x: 0, y: 0, scale: 1 }),
+      oldDiagram: Object.freeze({ x: 97, y: 80, scale: 1 }),
+      oldFrame: Object.freeze({ x: 90, y: 105, width: 650, height: 570 }),
+      oldKicker: Object.freeze({ x: 415, y: 155 }),
+      oldTitle: Object.freeze({ x: 415, y: 155, chineseX: 415, chineseY: 190 }),
+      oldQuestion: Object.freeze({ x: 415, y: 260 }),
+      oldCrossInset: Object.freeze({ x: 30, y: 40 }),
+      newStructure: Object.freeze({ x: 689, y: 249, scale: 0.62 }),
+      newFrame: Object.freeze({ x: 860, y: 105, width: 650, height: 570 }),
+      newTitle: Object.freeze({ x: 1185, y: 155, chineseY: 190 }),
+      newQuestion: Object.freeze({ x: 1185, y: 255, lineGap: 40 })
+    }),
+    finalStatement: Object.freeze({ x: 1040, y: 755 }),
+    subtitle: Object.freeze({ x: 280, y: 804, width: 1040, height: 64, textX: 800, textY: 846 })
+  }),
+  typography: Object.freeze({
+    conceptLabel: 34, title: 27, question: 26, newQuestion: 24,
+    subtitle: 28, chineseLabel: 27, secondaryLabel: 20
+  }),
+  emphasis: Object.freeze({
+    oldRepresentationOpacity: 0.35, secondaryLabelOpacity: 1,
+    circleStrokeWidth: 4, frameStrokeWidth: 3, crossOutStrokeWidth: 4
+  })
+});
