@@ -1,4 +1,4 @@
-import { timeline } from "./timeline.js";
+const timeline = window.SHOT_TIMELINE;
 
 const $ = (id) => document.getElementById(id);
 const clamp = (n, min = 0, max = 1) => Math.min(max, Math.max(min, n));

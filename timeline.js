@@ -1,4 +1,5 @@
-export const timeline = Object.freeze({
+// Exposed explicitly for classic-script, file:// playback. Keep all retiming here.
+window.SHOT_TIMELINE = Object.freeze({
   duration: 25,
   shot05: Object.freeze({
     start: 0, liquidStart: 1, liquidEnd: 3,

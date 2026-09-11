@@ -3,24 +3,21 @@
 A standalone, dependency-free 25-second SVG animatic based on the approved
 `references/shot05-shot06-storyboard.png` storyboard.
 
-## Run
+## Preview
 
-Serve the repository with any static HTTP server, for example:
+Double-click `index.html` (or use **Open with** and choose a browser). The
+project is designed to run directly from a local `file://` URL on Windows,
+macOS, and Linux; no server, installation, or build step is required.
 
-```bash
-python3 -m http.server 4173
-```
-
-Then open <http://localhost:4173>. The animatic autoplays once. Use the
-Play/Pause, Replay, progress bar, or keyboard controls (`Space`, `Home`, arrow
-keys) to review timing. The animation honors `prefers-reduced-motion` by
-starting paused.
+The animatic autoplays once. Use Play/Pause, Replay, the progress bar, or
+keyboard controls (`Space`, `Home`, arrow keys) to review timing. The animation
+honors `prefers-reduced-motion` by starting paused.
 
 ## Files
 
 - `index.html` — responsive 16:9 SVG stage and accessible controls
 - `styles.css` — paper/sketch art direction and responsive presentation
-- `timeline.js` — the single source of truth for cues and subtitle timing
+- `timeline.js` — the globally accessible, single source of truth for cues and subtitle timing
 - `main.js` — deterministic render loop driven entirely by local timeline time
 
 ## Timing
