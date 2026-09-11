@@ -74,20 +74,20 @@ function render(time) {
   visible(el["confined-liquid"], liquid * .82);
   draw(el["liquid-contour"], liquid);
 
-  const oldFocus = progressBetween(time, s5.oldFocusStart, s5.oldCrossStart);
+  const oldFocus = progressBetween(time, s5.oldFocusStart, s5.oldFocusEnd);
   draw(el["old-tip-circle"], oldFocus);
-  visible(el["tip-size-label"], oldFocus * (1 - .76 * progressBetween(time, s5.oldFocusFadeStart, 8.3)) * (1 - progressBetween(time, 15.4, 16)));
-  visible(el["old-tip-circle"], oldFocus * (1 - progressBetween(time, s5.oldCrossStart, s5.thinkingPauseStart)));
-  el["tip-size-cross"].querySelectorAll(".draw").forEach((p, i) => draw(p, progressBetween(time, s5.oldCrossStart + i * .16, s5.oldCrossStart + .52 + i * .16)));
-  visible(el["tip-size-cross"], 1 - progressBetween(time, 15.4, 16));
+  visible(el["tip-size-label"], oldFocus * (1 - .76 * progressBetween(time, s5.oldFocusFadeStart, s5.oldFocusFadeEnd)) * (1 - progressBetween(time, s6.moveStructureStart, s6.moveStructureEnd)));
+  visible(el["old-tip-circle"], oldFocus * (1 - progressBetween(time, s5.oldCrossStart, s5.oldCircleFadeEnd)));
+  el["tip-size-cross"].querySelectorAll(".draw").forEach((p, i) => draw(p, progressBetween(time, s5.oldCrossStart + i * .25, s5.oldCircleFadeEnd - .25 + i * .25)));
+  visible(el["tip-size-cross"], 1 - progressBetween(time, s6.moveStructureStart, s6.moveStructureEnd));
 
   draw(el["new-gap-circle"], progressBetween(time, s5.newGapCircleStart, s5.newGapCircleEnd));
-  visible(el["new-gap-circle"], 1 - progressBetween(time, 15.4, 16));
+  visible(el["new-gap-circle"], 1 - progressBetween(time, s6.moveStructureStart, s6.moveStructureEnd));
   const gap = progressBetween(time, s5.gapLabelStart, s5.gapLabelEnd);
-  visible(el["gap-label"], gap * (1 - .55 * progressBetween(time, s5.liquidEmphasisStart, s5.liquidBridgeStart)) * (1 - progressBetween(time, 15.4, 16)));
+  visible(el["gap-label"], gap * (1 - .55 * progressBetween(time, s5.liquidEmphasisStart, s5.liquidBridgeStart)) * (1 - progressBetween(time, s6.moveStructureStart, s6.moveStructureEnd)));
   draw(el["gap-label"].querySelector("path"), gap);
   const bridge = progressBetween(time, s5.liquidBridgeStart, s5.liquidBridgeEnd);
-  visible(el["liquid-bridge-label"], bridge * (1 - progressBetween(time, 15.4, 16)));
+  visible(el["liquid-bridge-label"], bridge * (1 - progressBetween(time, s6.moveStructureStart, s6.moveStructureEnd)));
   draw($("liquid-pointer"), bridge);
 
   const substrate = progressBetween(time, s5.substrateStart, s5.substrateDrawEnd);
@@ -99,7 +99,7 @@ function render(time) {
   $("hair-structure").setAttribute("transform", `translate(${target.x * move} ${target.y * move}) scale(${1 + (target.scale - 1) * move})`);
   const replay = time >= s6.transferReplayStart && time < s6.settleStart ? Math.sin(progressBetween(time, s6.transferReplayStart, s6.settleStart) * Math.PI) : 0;
   el["confined-liquid"].style.fill = replay ? `rgb(${169 - 16 * replay},${220 - 8 * replay},${232})` : "";
-  if (time >= 15) draw(el["written-line"], .78 + .22 * progressBetween(time, s6.transferReplayStart + .2, s6.settleStart));
+  if (time >= s6.transferReplayStart && time < s6.settleStart) draw(el["written-line"], 1 - .08 * Math.sin(progressBetween(time, s6.transferReplayStart, s6.settleStart) * Math.PI));
 
   visible(el["old-representation-group"], progressBetween(time, s6.oldTipStart, s6.oldTipStart + .3));
   visible(el["old-kicker"], progressBetween(time, s6.oldTipStart, s6.oldTipStart + .45) * (1 - progressBetween(time, s6.oldTitleStart, s6.oldTitleEnd)));
