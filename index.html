@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Representation Shift — Shot05 + Shot06</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <div class="stage-shell">
+      <svg id="stage" viewBox="0 0 1600 900" role="img" aria-labelledby="svg-title svg-desc">
+        <title id="svg-title">从单一尖端到双毛结构的液体控制</title>
+        <desc id="svg-desc">手绘动画展示注意力从尖端尺寸转移到两根锥形毛之间的间隙和其中的液桥。</desc>
+        <defs>
+          <filter id="wobble" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.012 0.035" numOctaves="1" seed="8" result="noise"/>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.15"/>
+          </filter>
+          <pattern id="paper-fibers" width="90" height="90" patternUnits="userSpaceOnUse">
+            <path d="M3 18l22-2M58 67l18 1M16 82l12-1M70 28l14-2" stroke="#786f61" opacity=".055" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <g id="paper-background"><rect width="1600" height="900" fill="#f4f0e6"/><rect width="1600" height="900" fill="url(#paper-fibers)"/></g>
+        <text id="corner-note" class="corner-note" x="55" y="62">SHOT 05 · NOTICE THE SPACE BETWEEN TWO HAIRS</text>
+
+        <g id="scientific-scene">
+          <g id="hair-structure">
+            <path id="confined-liquid" class="liquid reveal-fill" d="M765 245 C780 278 786 352 800 525 C814 352 820 278 835 245 C819 255 782 255 765 245Z"/>
+            <g class="hair-shapes" filter="url(#wobble)">
+              <path id="hair-left" d="M617 130 C650 235 704 352 794 610 C757 489 703 323 666 139 C651 126 634 124 617 130Z"/>
+              <path id="hair-right" d="M983 130 C950 235 896 352 806 610 C843 489 897 323 934 139 C949 126 966 124 983 130Z"/>
+              <path class="hair-hatch" d="M635 146l34 112m-20-118l50 174m-34-166l57 206m226-208l-35 116m20-120l-50 176m35-170l-58 207"/>
+            </g>
+            <path id="liquid-contour" class="draw accent-blue" d="M767 246 C781 270 787 371 800 526 C813 371 819 270 833 246"/>
+            <path id="substrate" class="draw" d="M630 617 C736 612 856 620 986 616"/>
+            <path id="written-line" class="draw accent-blue strong" d="M799 614 C850 614 907 617 958 614"/>
+            <text id="liquid-transfer-label" class="small-label" x="900" y="654">LIQUID TRANSFER</text>
+          </g>
+
+          <g id="shot05-annotations">
+            <path id="old-tip-circle" class="draw old-mark" d="M733 529 C711 548 713 601 739 625 C766 647 821 631 832 595 C845 554 807 522 770 526 C752 527 742 531 733 529Z"/>
+            <g id="tip-size-label"><text x="1010" y="525">TIP SIZE</text><text class="cn" x="1010" y="559">尖端尺寸</text></g>
+            <g id="tip-size-cross" class="accent-stroke"><path class="draw" d="M995 488L1160 574"/><path class="draw" d="M1150 480L1002 581"/></g>
+            <path id="new-gap-circle" class="draw accent-stroke" d="M726 224 C680 288 699 480 771 542 C824 568 891 499 888 361 C885 256 846 207 793 207 C763 207 740 214 726 224Z"/>
+            <g id="gap-label" class="accent-text"><text x="1040" y="323">GAP</text><text id="gap-label-cn" class="cn" x="1040" y="360">间隙</text><path class="draw accent-stroke" d="M1022 330C973 339 934 359 886 386"/></g>
+            <g id="liquid-bridge-label" class="accent-text"><text x="1015" y="405">LIQUID BRIDGE</text><text id="liquid-bridge-label-cn" class="cn" x="1015" y="442">液桥</text><path id="liquid-pointer" class="draw accent-stroke" d="M1001 416C935 420 881 428 816 447"/></g>
+          </g>
+        </g>
+
+        <g id="old-representation-group">
+          <text id="old-kicker" class="kicker" x="145" y="180">OLD</text>
+          <path id="old-single-tip" class="draw hair-outline" d="M165 265 C187 351 203 432 218 552 C231 427 249 348 274 265 C241 279 199 278 165 265Z"/>
+          <path id="old-thinner-tip" class="draw hair-outline" d="M410 278 C425 361 433 438 440 552 C448 440 456 361 472 278 C452 287 430 287 410 278Z"/>
+          <path id="old-arrow" class="draw" d="M300 405C334 398 356 399 386 404m-18-15l18 15-18 15"/>
+          <path id="old-frame" class="draw frame" d="M90 128 C235 119 381 124 526 130 L532 675 C381 684 235 680 88 673Z"/>
+          <g id="old-heading"><text id="old-title" x="150" y="205">OLD REPRESENTATION</text><text id="old-title-cn" class="cn" x="194" y="239">原来的问题表征</text><text id="old-question" class="question" x="152" y="625">怎样做一个更细的 tip？</text></g>
+          <g id="old-group-cross" class="accent-stroke"><path class="draw" d="M112 151L509 651"/><path class="draw" d="M500 151L114 652"/></g>
+        </g>
+
+        <g id="new-representation-group">
+          <path id="new-frame" class="draw frame accent-stroke" d="M840 112 C1055 106 1290 108 1514 114 L1511 655 C1292 662 1064 659 842 652Z"/>
+          <g id="new-heading" class="accent-text"><text id="new-title" x="1177" y="153">NEW REPRESENTATION</text><text id="new-title-cn" class="cn" x="1177" y="188">新的问题表征</text></g>
+          <text id="new-question" class="question" x="1344" y="354"><tspan x="1344" dy="0">怎样利用两根毛之间的</tspan><tspan x="1344" dy="40">结构去控制液体？</tspan></text>
+        </g>
+
+        <text id="final-statement" x="1040" y="755">这不是同一道题的更好答案。</text>
+        <g id="subtitle-layer" aria-live="polite"><rect x="280" y="804" width="1040" height="64" rx="4"/><text id="subtitle-text" x="800" y="846"></text></g>
+      </svg>
+    </div>
+    <div class="controls" aria-label="Animation controls">
+      <button id="play-pause" type="button">Pause</button>
+      <button id="replay" type="button">Replay</button>
+      <label class="scrubber"><span class="sr-only">Animation progress</span><input id="progress" type="range" min="0" max="25" step="0.01" value="0"></label>
+      <output id="timecode">00:00 / 00:25</output>
+    </div>
+  </main>
+  <!-- Classic scripts intentionally keep this preview compatible with file://. -->
+  <script src="timeline.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

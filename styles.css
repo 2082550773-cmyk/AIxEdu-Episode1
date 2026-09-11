@@ -1,0 +1,23 @@
+:root { color-scheme: light; --ink:#292925; --muted:#766f63; --paper:#f4f0e6; --accent:#d8462d; --blue:#a9dce8; }
+* { box-sizing:border-box; }
+body { margin:0; min-height:100vh; display:grid; place-items:center; background:#d8d4ca; color:var(--ink); font-family:"Trebuchet MS","Noto Sans SC",sans-serif; }
+.app { width:min(100vw, 177.78vh); padding:14px; }
+.stage-shell { aspect-ratio:16/9; box-shadow:0 12px 34px #39362f2b; background:var(--paper); overflow:hidden; }
+#stage { display:block; width:100%; height:100%; }
+text { fill:var(--ink); font-family:"Comic Sans MS","Bradley Hand","Noto Sans SC",sans-serif; font-size:34px; letter-spacing:1px; }
+.cn { font-size:27px; letter-spacing:0; }.corner-note { font-size:20px; fill:var(--muted); letter-spacing:2px; }
+.hair-shapes path:not(.hair-hatch), .hair-outline { fill:#eee9de; stroke:var(--ink); stroke-width:5; stroke-linejoin:round; }
+.hair-hatch { fill:none; stroke:#5b574e; stroke-width:2; opacity:.38; }
+.liquid { fill:var(--blue); opacity:0; }.draw { fill:none; stroke:var(--ink); stroke-width:4; stroke-linecap:round; stroke-linejoin:round; }
+.accent-stroke, .accent-stroke .draw { stroke:var(--accent); }.accent-text text, #final-statement { fill:var(--accent); }.accent-blue { stroke:#78bfd1; }.strong { stroke-width:7; }
+.old-mark { stroke:var(--accent); stroke-dasharray:12 12; }.frame { stroke-width:3; }.small-label { font-size:20px; fill:#498a99; letter-spacing:2px; }
+.kicker { font-size:30px; fill:var(--muted); }.question { font-size:26px; letter-spacing:0; }
+#old-title,#new-title { font-size:27px; letter-spacing:1px; }#new-title,#new-title-cn { text-anchor:middle; }.accent-text { color:var(--accent); }
+#new-question { text-anchor:middle; font-size:24px; }
+#final-statement { font-size:30px; font-weight:700; opacity:0; }
+#subtitle-layer rect { fill:#24231f; opacity:.94; }#subtitle-layer text { fill:#fffdf7; font-family:"Noto Sans SC","Microsoft YaHei",sans-serif; font-size:28px; text-anchor:middle; letter-spacing:0; }
+.controls { display:flex; align-items:center; gap:10px; padding:10px 2px 0; }
+button { border:1px solid #80786b; background:#f7f3e9; color:#292925; border-radius:3px; padding:8px 15px; font:600 14px system-ui; cursor:pointer; }button:hover,button:focus-visible { border-color:var(--accent); outline:none; }
+.scrubber { flex:1; display:flex; }.scrubber input { width:100%; accent-color:var(--accent); }#timecode { min-width:112px; text-align:right; font:13px ui-monospace,monospace; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+@media(max-width:650px){.app{padding:4px}.controls{flex-wrap:wrap}.scrubber{order:3;flex-basis:100%}button{padding:6px 10px}}
