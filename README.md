@@ -22,8 +22,11 @@ honors `prefers-reduced-motion` by starting paused.
 
 ## Timing
 
-- Shot05: local `0–15s` (video `00:43–00:58`)
-- Shot06: local `15–25s` (video `00:58–01:08`)
+- Shot05: local `0–13.5s`
+- Shot06: local `13.5–25s`
 
 All cue times are centralized in `timeline.js`. Rendering is state-based, so
 scrubbing and replaying produce the same frame at the same time.
+
+For the complete implementation and iteration workflow, see
+[`WORKFLOW.md`](WORKFLOW.md).
